@@ -20,7 +20,7 @@ const SideBar = () => {
               className={cn('flex gap-4 items-center p-4  rounded-lg justify-start', { 'bg-blue-1': isActive, })}
             >
               <Image
-                src={link.imgUrl}
+                src={link.imgURL}
                 alt={link.label}
                 width={20}
                 height={20}
