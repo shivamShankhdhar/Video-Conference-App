@@ -14,7 +14,7 @@ interface MeetingCardProps {
   isPreviousMeeting?: boolean;
   buttonIcon1?: string;
   buttonText?: string;
-  handleClick: () => void;
+  handleClick?: () => void;
   link: string;
 }
 

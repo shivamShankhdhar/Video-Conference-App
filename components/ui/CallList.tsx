@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import MeetingCard from './MeetingCard'
 import Loader from './Loader'
+import { toast } from './use-toast'
 
 const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
   const { endedCalls, upcomingCalls, callRecordings, isLoading } = useGetCalls()
@@ -42,12 +43,17 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
 
   useEffect(() => {
     const fetchRecordings = async () => {
-      const CallData = await Promise.all(callRecordings.map((meeting) => meeting.queryRecordings()))
-      const recordings = CallData
-        .filter(call => call.recordings.length > 0)
-        .flatMap(call => call.recordings)
+      try {
 
-      setRecordings(recordings)
+        const CallData = await Promise.all(callRecordings.map((meeting) => meeting.queryRecordings()))
+        const recordings = CallData
+          .filter(call => call.recordings.length > 0)
+          .flatMap(call => call.recordings)
+
+        setRecordings(recordings)
+      } catch (error) {
+        toast({ title: "Try again later" })
+      }
     }
     if (type === 'recordings') fetchRecordings();
   })
@@ -65,12 +71,10 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
               '/icons/recordings.svg'
           }
           title={(meeting as Call).state?.custom.description.substring(0, 26) || meeting.filename.substring(0, 20) || "No Description"}
-          date={meeting.state?.startsAt.toLocaleString() || start_time.toLocaleString()}
+          date={meeting.state?.startsAt.toLocaleString() || meeting.start_time.toLocaleString()}
           isPreviousMeeting={type === 'ended'}
           buttonIcon1={type === 'recordings' ? '/icons/play.svg' : undefined}
-          handleClick={type === 'recordings ' ? () => {
-            router.push(`${meeting.url}`)
-          } : () => router.push(`/meeting/${meeting.id}`)}
+          handleClick={type === 'recordings ' ? () => router.push(`${meeting?.url}`) : () => router.push(`/meeting/${meeting?.id}`)}
           link={type === 'recordings' ? meeting.url : `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meeting.id}`}
           buttonText={type === 'recordings' ? 'Play' : "Start"}
         />
@@ -80,5 +84,4 @@ const CallList = ({ type }: { type: 'ended' | 'upcoming' | 'recordings' }) => {
     </div>
   )
 }
-
 export default CallList
