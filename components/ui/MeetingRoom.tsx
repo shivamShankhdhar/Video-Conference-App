@@ -22,6 +22,8 @@ import Image from 'next/image'
 type callLayoutType = 'grid' | 'speaker-left' | 'spkeaker-right'
 
 const MeetingRoom = () => {
+  const meetingLink = usePathname()
+  const router = useRouter()
   const [callDetails, setCallDetails] = useState<Call>()
 
   const searchParams = useSearchParams()
@@ -48,9 +50,6 @@ const MeetingRoom = () => {
         return <SpeakerLayout participantsBarPosition="right" />
     }
   }
-
-  const meetingLink = usePathname()
-  const router = useRouter()
   return (
     <section className='relative h-screen w-full overflow-hidden pt-4 text-white'>
       <div className="relative flex size-full items-center justify-center">
