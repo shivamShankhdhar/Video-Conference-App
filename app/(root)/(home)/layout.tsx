@@ -1,3 +1,4 @@
+import DeveloperInfo from '@/components/ui/DeveloperInfo';
 import NavBar from '@/components/ui/NavBar';
 import SideBar from '@/components/ui/SideBar';
 import React, { ReactNode } from 'react';
