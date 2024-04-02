@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Some Snapshots of the app
 
-## Getting Started
+The home page 
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/814d1ec0-89ed-497a-85e0-fbe7a8a4fad5)
 
-First, run the development server:
+Upcoming Meetings Page
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/42a53dcc-414b-47c1-9693-06ac719eeea6)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Previous Meeting Page
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/8aa4add0-c70f-4f26-a819-fb07354083bf)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Recordings Page
 
-## Learn More
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/becbc437-00de-4b8b-90e9-0f7114c37603)
 
-To learn more about Next.js, take a look at the following resources:
+Personal Room Page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/36f0a2c6-ecc4-4079-a321-75cedd5c86d7)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Instant Meeting 
 
-## Deploy on Vercel
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/ec73b7fa-a94e-4068-9e41-5c440f55f93c)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Call Setup
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/65af6706-21d4-424b-bd2e-e710b96710af)
+
+Meeting Room
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/969d87dd-cf14-4afa-acd3-968b2ac76cc1)
+
+Schedule Meeting 
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/90cf2906-5662-43e4-9191-291f01e0bb39)
+
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/18affdd8-2303-42d1-912d-84f74f7d7de4)
+
+Meeting Scheduled
+
+![image](https://github.com/shivamShankhdhar/Video-Conference-App/assets/39639414/56a9f35a-0d92-47a1-bdf0-06293f555159)
+
+
+
+
+
+
+
+
+
+
+
+
