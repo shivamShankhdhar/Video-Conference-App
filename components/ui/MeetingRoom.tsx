@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { CallControls, CallingState, CallParticipantsList, CallStatsButton, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk'
+import { Call, CallControls, CallingState, CallParticipantsList, CallStatsButton, PaginatedGridLayout, SpeakerLayout, useCallStateHooks } from '@stream-io/video-react-sdk'
 import React, { useState } from 'react'
 
 import {
@@ -10,14 +10,20 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { LayoutList, Users } from 'lucide-react'
-import { useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import EndCallButton from './EndCallButton'
 import Loader from './Loader'
+import { useUser } from '@clerk/nextjs'
+import { toast } from './use-toast'
+import { Button } from './button'
+import Image from 'next/image'
 
 
 type callLayoutType = 'grid' | 'speaker-left' | 'spkeaker-right'
 
 const MeetingRoom = () => {
+  const [callDetails, setCallDetails] = useState<Call>()
+
   const searchParams = useSearchParams()
   const isPersonalRoom = !!searchParams.get('personal')
 
@@ -28,6 +34,7 @@ const MeetingRoom = () => {
   const { useCallCallingState } = useCallStateHooks()
 
   const callingState = useCallCallingState();
+  const { user } = useUser()
 
   if (callingState !== CallingState.JOINED) return <Loader />
 
@@ -42,6 +49,8 @@ const MeetingRoom = () => {
     }
   }
 
+  const meetingLink = usePathname()
+  const router = useRouter()
   return (
     <section className='relative h-screen w-full overflow-hidden pt-4 text-white'>
       <div className="relative flex size-full items-center justify-center">
@@ -56,7 +65,9 @@ const MeetingRoom = () => {
         </div>
       </div>
       <div className="fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap">
-        <CallControls />
+        <CallControls onLeave={() => {
+          router.push('/')
+        }} />
 
 
         <DropdownMenu>
@@ -91,6 +102,16 @@ const MeetingRoom = () => {
             <Users size={20} className='text-white' />
           </div>
         </button>
+
+        <Button
+          className='bg-green-500 cursor-pointer'
+          onClick={() => {
+            // alert(meetingLink)
+            navigator.clipboard.writeText(meetingLink)
+            toast({ title: "Meeting link copied to clipboard" })
+          }}>
+          Invite &nbsp; <Image src='/icons/share.svg' alt='link' width={20} height={20}></Image>
+        </Button>
         {!isPersonalRoom && <EndCallButton />}
       </div>
     </section >
